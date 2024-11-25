@@ -10,6 +10,8 @@ export async function fetchData() {
       }
   
       const data = await response.json();
+
+      console.log(data);
   
       if (!data.value || data.value.length === 0) {
         throw new Error('Geen data gevonden.');
