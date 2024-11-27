@@ -114,13 +114,15 @@
       padding: 10px;
       font-size: 14px;
       cursor: pointer;
+      
     }
   
     input {
       margin: 5px;
       padding: 10px;
       font-size: 14px;
-      border: 1px solid black;
+      border: 4px solid black;
+      width: 300px;
     }
   </style>
   
