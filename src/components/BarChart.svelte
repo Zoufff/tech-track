@@ -134,7 +134,7 @@
 
 
 
-<style>
+<style> 
   .chart-container{
     position: relative;
     width: auto;
