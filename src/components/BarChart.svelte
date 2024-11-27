@@ -13,11 +13,16 @@
   function updateChart(data) {
     const barHeight = 27; // Hoogte van elke balk
     const barSpacing = 40; // Ruimte tussen de balken
-    const svgWidth = 1650; // Breedte van de SVG
+    const svgWidth = 1550; // Breedte van de SVG
     const svgHeight = data.length * barSpacing + 50; // Dynamische hoogte op basis van het aantal data
     const xScale = d3.scaleLinear()
       .domain([0, d3.max(data, d => d.value)]) // Bepaal de schaal op basis van de grootste waarde
       .range([0, svgWidth - 400]); // Breedtetoewijzing
+
+
+
+
+
 
 
 
@@ -69,6 +74,12 @@
   }
 
 
+
+
+
+
+
+
   // Functie om te filteren op locatie
   function filterByLocation(location) {
     if (location === 'all') {
@@ -96,7 +107,13 @@
     updateChart(filteredData);
   }
 
-  
+
+
+
+
+
+
+
   // Haalt data op bij het laden van de pagina
   onMount(async () => {
     try {
@@ -110,8 +127,15 @@
   });
 </script>
 
+
+
+
+
+
+
+
 <style>
-  .chart-container {
+  .chart-container{
     position: relative;
     width: auto;
     max-width: 100%;
@@ -121,14 +145,36 @@
     margin: 2em;
   }
 
+  h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2.5em;
+  }
+
   .name-label {
     font-size: 14px;
     font-weight: bold;
   }
 
-  .filter-controls {
-    margin-bottom: 1em;
-  }
+
+  .filter-controls, h1 {
+  display: flex; /* Gebruik Flexbox */
+  justify-content: center; /* Verschuif inhoud naar rechts */
+  gap: 10px; /* Ruimte tussen de elementen */
+  margin-bottom: 1em; /* Ruimte onder de container */
+  position: sticky; /* Plakt aan de bovenkant */
+  top: 0; /* Bovenaan de viewport vastgezet */
+  background-color: white; /* Achtergrondkleur om overlapping te voorkomen */
+  z-index: 1000; /* Zorg dat het element boven andere elementen ligt */
+  padding: 10px;
+}
+
+input, select, button {
+  margin: 0; /* Reset eventuele marges */
+  padding: 10px; /* Consistente padding */
+  font-size: 14px; /* Zorg voor gelijke tekstgrootte */
+  border: 2px solid black; /* Voeg een duidelijke rand toe */
+  background-color: white;
+}
 
   input, select, button {
     margin: 5px;
@@ -136,9 +182,19 @@
     font-size: 14px;
     border: 2px solid black;
   }
+
+  input{
+    width: 550px;
+  }
 </style>
 
+
+
 <div>
+  <h1>Wereldwijde verschillen in levensverwachting</h1>
+</div>
+
+
   <!-- Filtercontrols -->
   <div class="filter-controls">
     <!-- Zoekbalk -->
@@ -150,7 +206,7 @@
 
     <!-- Filter op locatie -->
     <select on:change={(e) => filterByLocation(e.target.value)}>
-      <option value="all">Alle locaties</option>
+      <option value="all">Filteren op locatie</option>
       {#each [...new Set(data.map(d => d.location))] as location}
         <option value={location}>{location}</option>
       {/each}
@@ -160,6 +216,13 @@
     <button on:click={() => sortChart('asc')}>Sorteer Oplopend</button>
     <button on:click={() => sortChart('desc')}>Sorteer Aflopend</button>
   </div>
+
+
+
+
+
+
+
 
   <!-- Grafiek -->
   {#if errorMessage}
@@ -172,4 +235,4 @@
       </svg>
     </div>
   {/if}
-</div>
+
