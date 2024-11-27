@@ -1,7 +1,4 @@
 <script>
-
-
-
     import { onMount } from 'svelte';
     import { fetchData } from '../lib/api.js'; // Importeer de fetch-functie
     import * as d3 from 'd3';
@@ -124,7 +121,7 @@
       margin: 5px;
       padding: 10px;
       font-size: 14px;
-      border: 4px solid black;
+      border: 8px solid black;
       width: 300px;
     }
   </style>
