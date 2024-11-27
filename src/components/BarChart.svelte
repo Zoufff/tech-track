@@ -1,4 +1,7 @@
 <script>
+
+
+
     import { onMount } from 'svelte';
     import { fetchData } from '../lib/api.js'; // Importeer de fetch-functie
     import * as d3 from 'd3';
