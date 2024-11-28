@@ -17,6 +17,7 @@
 	"dependencies": {
 		"@sveltejs/adapter-vercel": "^5.4.8",
 		"axios": "^1.7.8",
+		"cors": "^2.8.5",
 		"d3": "^7.9.0",
 		"express": "^4.21.1"
 	},
