@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# tech-track-24-25
-tech track 24-25 Soufiane Ayaou
+Tech track 24-25 Soufiane Ayaou
 =======
 # Wereldwijde Verschillen in Levensverwachting
 
