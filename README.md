@@ -2,42 +2,25 @@
 # tech-track-24-25
 tech track 24-25 Soufiane Ayaou
 =======
-# sv
+# Wereldwijde Verschillen in Levensverwachting
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Dit project is een interactieve website die de levensverwachting van alle landen ter wereld toont. De data wordt opgehaald via een externe API en getoond op een gebruiksvriendelijke manier met behulp van JavaScript, D3, Node.js, en Svelte. Het doel van deze applicatie is om gebruikers inzicht te geven in de levensverwachting per land en hoe deze statistieken zich over de wereld verspreiden.
 
-## Creating a project
+## Functies
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Levensverwachting per Land**: Toon de levensverwachting van elk land ter wereld, gebaseerd op de meest recente data van de WHO API.
+- **Zoekfunctie**: De gebruiker kan landen specifieke landen opzoeken.
+- **Sorteren van gegevens**: De gegevens kunnen gesorteerd worden op laag naar hoge waarde en andersom.
+- **Visuele Weergave**: De gegevens worden op een overzichtelijke manier weergegeven, inclusief landnamen, levensverwachtingswaarden.
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Gebruikte Technologieën
 
-# create a new project in my-app
-npx sv create my-app
-```
+- **JavaScript**: De frontend maakt gebruik van JavaScript (Fetch API) om data op te halen van een externe API.
+- **D3.js**: Gebruikt voor geavanceerde datavisualisatie, zoals grafieken en interactieve kaarten.
+- **Node.js**: Voor de backend, waarmee de server draait en de proxy server voor CORS-beperkingen wordt afgehandeld.
+- **Svelte**: Een modern JavaScript framework voor het bouwen van de gebruikersinterface van de website, met een focus op snelheid en eenvoud.
+- **API**: De data wordt opgehaald via de [WHO Global Health Observatory API]([https://ghoapi.azureedge.net](https://ghoapi.azureedge.net/api/WHOSIS_000001), die gegevens levert over de levensverwachting in verschillende landen.
+- **HTML/CSS**: Voor de opmaak en structuur van de website.
 
-## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
->>>>>>> 5e92c5b (mijn eerste commit)
