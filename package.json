@@ -16,6 +16,13 @@
 	},
 	"dependencies": {
 		"@sveltejs/adapter-vercel": "^5.4.8",
-		"d3": "^7.9.0"
-	}
+		"axios": "^1.7.8",
+		"d3": "^7.9.0",
+		"express": "^4.21.1"
+	},
+	"description": "<<<<<<< HEAD # tech-track-24-25 tech track 24-25 Soufiane Ayaou ======= # sv",
+	"main": "svelte.config.js",
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
 }
