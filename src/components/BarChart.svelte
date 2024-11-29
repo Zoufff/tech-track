@@ -33,6 +33,7 @@
       .attr('height', svgHeight);
 
     // Voegtt rechthoekige balken toe
+    // code van lesopdracht en https://observablehq.com/@d3/lets-make-a-bar-chart/2
     d3.select(chartContainer)
       .select('.bars')
       .selectAll('rect')
@@ -161,7 +162,7 @@
   justify-content: center; 
   gap: 10px; 
   margin-bottom: 1em; 
-  position: sticky; 
+  position: sticky;
   top: 0; 
   background-color: white; 
   z-index: 1000; 
@@ -170,8 +171,8 @@
 
 input, select, button {
   margin: 0; 
-  padding: 10px; 
-  font-size: 14px;
+  padding: 10px;
+  font-size: 14px; 
   border: 2px solid black; 
   background-color: white;
 }
