@@ -157,22 +157,22 @@
 
 
   .filter-controls, h1 {
-  display: flex; /* Gebruik Flexbox */
-  justify-content: center; /* Verschuif inhoud naar rechts */
-  gap: 10px; /* Ruimte tussen de elementen */
-  margin-bottom: 1em; /* Ruimte onder de container */
-  position: sticky; /* Plakt aan de bovenkant */
-  top: 0; /* Bovenaan de viewport vastgezet */
-  background-color: white; /* Achtergrondkleur om overlapping te voorkomen */
-  z-index: 1000; /* Zorg dat het element boven andere elementen ligt */
+  display: flex; 
+  justify-content: center; 
+  gap: 10px; 
+  margin-bottom: 1em; 
+  position: sticky; 
+  top: 0; 
+  background-color: white; 
+  z-index: 1000; 
   padding: 10px;
 }
 
 input, select, button {
-  margin: 0; /* Reset eventuele marges */
-  padding: 10px; /* Consistente padding */
-  font-size: 14px; /* Zorg voor gelijke tekstgrootte */
-  border: 2px solid black; /* Voeg een duidelijke rand toe */
+  margin: 0; 
+  padding: 10px; 
+  font-size: 14px;
+  border: 2px solid black; 
   background-color: white;
 }
 
