@@ -147,7 +147,7 @@ const countryNames = {
   RWA: 'Rwanda',
   KNA: 'Saint Kitts and Nevis',
   LCA: 'Saint Lucia',
-  VCT: 'Saint Vincent and the Grenadines',
+  VCT: 'St Vincent and the Grenadines',
   SMR: 'San Marino',
   SAU: 'Saudi Arabia',
   SEN: 'Senegal',
@@ -193,6 +193,9 @@ const countryNames = {
   YEM: 'Yemen',
   ZMB: 'Zambia',
   ZWE: 'Zimbabwe',
+  PRI: 'Puerto Rico',
+  PRI: 'Puerto Rico',
+  
 };
 
   const proxyUrl = 'http://localhost:3000/proxy'; // Proxy server URL die wordt gebruikt om data op te halen
@@ -227,9 +230,12 @@ const countryNames = {
     const latestYear = Math.max(...allData.value.map(item => item.TimeDim));
     console.log(`Nieuwste jaar: ${latestYear}`);
 
+   // dit zijn alle afkortingen die niet voor een land staan/onbekend zijn en die ik wil uitsluiten van verdere verwerking in de data
+    const excludedCountries = ['WB_HI', 'WB_LI', 'WB_UMI', "AMR", 'PSE', 'GLOBAL', 'STP', 'WSM', 'EMR', 'SEAR', 'WB_LMI', 'AFR', 'COD', 'EUR' ];
+
     // Filtert de data op basis van het nieuwste jaar en een specifieke Dim1 waarde ("SEX_BTSX")
     const filteredData = allData.value.filter(
-      item => item.TimeDim === latestYear && item.Dim1 === 'SEX_BTSX'
+      item => item.TimeDim === latestYear && item.Dim1 === 'SEX_BTSX' && !excludedCountries.includes(item.SpatialDim)
     );
 
     // Controleert of er gefilterde data is
