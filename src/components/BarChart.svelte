@@ -1,5 +1,5 @@
 <script>
-
+  import StyleComponent from './StyleComponent.svelte';
   import { onMount } from 'svelte';
   import { fetchData } from '../lib/Fetch.js'; // fetch-functie importeren
   import * as d3 from 'd3';
@@ -14,7 +14,7 @@
   function updateChart(data) {
     const barHeight = 27; // Hoogte van elke balk
     const barSpacing = 40; // Ruimte tussen de balken
-    const svgWidth = 1550; // Breedte van de SVG
+    const svgWidth = 1550; // breedte van de SVG
     const svgHeight = data.length * barSpacing + 50; // Dynamische hoogte op basis van het aantal data
     const xScale = d3.scaleLinear()
       .domain([0, d3.max(data, d => d.value)]) // Bepaal de schaal op basis van de grootste waarde
@@ -127,6 +127,16 @@
       errorMessage = error.message; // Toon foutmelding in de UI
     }
   });
+
+  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
+  let sortOrder = 'asc'; // dit houdt de sorteervolgorde bij
+  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button 
+  // de funtion die later gebruikt wordt in de sorteer button
+  function toggleSort() {
+    sortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+    sortChart(sortOrder);
+  }
+
 </script>
 
 
@@ -145,8 +155,11 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.2em;
     margin: 2em;
+    
   }
+  
 
+  
   h1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 2.5em;
@@ -165,7 +178,7 @@
   margin-bottom: 1em; 
   position: sticky;
   top: 0; 
-  background-color: white; 
+
   z-index: 1000; 
   padding: 10px;
 }
@@ -175,7 +188,7 @@ input, select, button {
   padding: 10px;
   font-size: 14px; 
   border: 2px solid black; 
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
 }
 
   input, select, button {
@@ -191,12 +204,12 @@ input, select, button {
 </style>
 
 
-
+ <!-- maak hier een apart component van -->
 <div>
   <h1>Wereldwijde verschillen in levensverwachting</h1>
 </div>
 
-
+ <!-- maak hier een apart component van -->
   <!-- Filtercontrols -->
   <div class="filter-controls">
     <!-- Zoekbalk -->
@@ -208,15 +221,18 @@ input, select, button {
 
     <!-- Filter op locatie -->
     <select on:change={(e) => filterByLocation(e.target.value)}>
-      <option value="all">Filteren op locatie</option>
+      <option value="all">Filteren op wereldeel</option>
       {#each [...new Set(data.map(d => d.location))] as location}
         <option value={location}>{location}</option>
       {/each}
     </select>
 
-    <!-- Sorteer knoppen -->
-    <button on:click={() => sortChart('asc')}>Sorteer Oplopend</button>
-    <button on:click={() => sortChart('desc')}>Sorteer Aflopend</button>
+
+   <!-- maak hier een apart component van -->
+    <!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button -->
+    <button on:click={toggleSort}>
+      Sorteer {sortOrder === 'asc' ? 'Oplopend' : 'Aflopend'}
+    </button>
   </div>
 
 

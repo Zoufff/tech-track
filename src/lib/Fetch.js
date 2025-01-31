@@ -1,6 +1,6 @@
 export async function fetchData() {
 
-// landcodes naar volledige namen
+// landcodes naar volledige namen (HERKANSING)
 const countryNames = {
   AFG: 'Afghanistan',
   ALB: 'Albanië',
@@ -225,12 +225,13 @@ const countryNames = {
 
     console.log('Alle gevonden data:', allData.value);
 
-    // Zoekt naar het nieuwste jaar in de data
+    // Zoekt naar het nieuwste jaar in de data (dynamisch)
     const latestYear = Math.max(...allData.value.map(item => item.TimeDim));
     console.log(`Nieuwste jaar: ${latestYear}`);
 
-   // dit zijn alle afkortingen die niet voor een land staan/onbekend zijn en die ik wil uitsluiten van verdere verwerking in de data
-    const excludedCountries = ['WB_HI', 'WB_LI', 'WB_UMI', "AMR", 'PSE', 'GLOBAL', 'STP', 'WSM', 'EMR', 'SEAR', 'WB_LMI', 'AFR', 'COD', 'EUR' ];
+   // dit zijn alle afkortingen die niet voor een land staan/onbekend zijn en die ik wil uitsluiten in verdere verwerking van de data
+   // (HERKANSING)
+    const excludedCountries = ['WB_HI', 'WB_LI', 'WB_UMI', "AMR", 'PSE', 'GLOBAL', 'STP', 'WSM', 'EMR', 'SEAR', 'WB_LMI', 'AFR', 'COD', 'EUR', 'WPR'];
 
     // Filtert de data op basis van het nieuwste jaar en een specifieke Dim1 waarde ("SEX_BTSX")
     const filteredData = allData.value.filter(
@@ -247,7 +248,7 @@ const countryNames = {
     // Verwerkt de gefilterde data retourneert de gewenste informatie
     return filteredData.map((item) => ({
       name: countryNames[item.SpatialDim] || item.SpatialDim, // Vervangtt de landcode door de naam
-      value: item.NumericValue || 0, // waarde
+      value: item.NumericValue ? parseFloat(item.NumericValue.toFixed(2)) : 0, // Afronden op 2 decimalen, bron: chatgpt (HERKANSING)
       location: item.ParentLocation || 'Onbekend', // Locatie, standaard 'Onbekend' als deze ontbreekt
     }));
 
