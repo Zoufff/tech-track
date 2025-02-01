@@ -1,6 +1,6 @@
 export async function fetchData() {
 
-// landcodes naar volledige namen (HERKANSING)
+// landcodes naar volledige namen (HERKANSINGh)
 const countryNames = {
   AFG: 'Afghanistan',
   ALB: 'Albanië',
