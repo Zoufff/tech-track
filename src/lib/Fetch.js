@@ -197,7 +197,7 @@ const countryNames = {
 };
 
 
-  const proxyUrl = 'http://localhost:3000/proxy'; // Proxy server URL die wordt gebruikt om data op te halen
+  const proxyUrl = 'https://mijn-proxy-qvsa6qe7x-zoufffs-projects.vercel.app/api/proxy.js'; // Proxy server URL die wordt gebruikt om data op te halen
 
   try {
     console.log(`Fetching data from proxy: ${proxyUrl}`);
