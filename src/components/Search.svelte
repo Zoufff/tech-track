@@ -10,10 +10,11 @@
   
   <style>
     input {
-      padding: 8px;
-      border: 1px solid rgb(0, 0, 0);
-      border-radius: 5px;
-      font-size: 16px;
+        margin: 5px;
+        padding: 10px;
+        font-size: 14px;
+        border: 2px solid black;
+        background-color: rgb(255, 255, 255);
     }
   </style>
   

@@ -17,8 +17,4 @@
         border: 2px solid black;
         background-color: rgb(255, 255, 255);
     }
-
-    button:hover {
-        background-color: darkblue;
-    }
 </style>
