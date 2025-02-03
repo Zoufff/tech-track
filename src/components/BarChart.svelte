@@ -3,9 +3,6 @@
   import { fetchData } from "../lib/Fetch.js"; // fetch-functie importeren
   import * as d3 from "d3";
   import ChartTitle from "./Title.svelte";
-  import Search from "./Search.svelte";
-  import LocationFilter from "./LocationFilter.svelte";
-  import SortButton from "./SortButton.svelte";
 
   let data = []; // Alle data van de API wordt opgehaald
   let filteredData = []; // gefilterde data die wordt weergegeven in de grafiek
@@ -98,13 +95,16 @@
     updateChart(filteredData);
   }
 
-  function updateData(newData) {
-  filteredData = newData; // Update de gefilterde data
-  updateChart(filteredData); // Vernieuw de grafiek
-}
+  // Functie om te zoeken in de data
+  function searchCountries(query) {
+    filteredData = data.filter((d) =>
+      d.name.toLowerCase().includes(query.toLowerCase()),
+    );
+    updateChart(filteredData);
+  }
 
-   // Haalt data op bij het laden van de pagina
-   onMount(async () => {
+  // Haalt data op bij het laden van de pagina
+  onMount(async () => {
     try {
       // Gebruik de aangepaste fetchData-functie om het nieuwste jaar en gefilterde data op te halen
       data = await fetchData();
@@ -114,23 +114,44 @@
       errorMessage = error.message; // Toon foutmelding in de UI
     }
   });
+
+  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
+  let sortOrder = "asc"; // dit houdt de sorteervolgorde bij
+  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
+  // de funtion die later gebruikt wordt in de sorteer button
+  function toggleSort() {
+    sortOrder = sortOrder === "asc" ? "desc" : "asc";
+    sortChart(sortOrder);
+  }
 </script>
 
 <!-- maak hier een apart component van -->
 <ChartTitle />
-<!-- controls -->
-<div class="controls">
+
+<!-- maak hier een apart component van -->
+<!-- Filtercontrols -->
+<div class="filter-controls">
   <!-- Zoekbalk -->
-  <SearchBar data={data} onSearch={updateData} />
+  <input
+    type="text"
+    placeholder="Zoek een land..."
+    on:input={(e) => searchCountries(e.target.value)}
+  />
 
   <!-- Filter op locatie -->
-  <LocationFilter />
+  <select on:change={(e) => filterByLocation(e.target.value)}>
+    <option value="all">Filteren op wereldeel</option>
+    {#each [...new Set(data.map((d) => d.location))] as location}
+      <option value={location}>{location}</option>
+    {/each}
+  </select>
 
   <!-- maak hier een apart component van -->
   <!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button -->
-  <SortButton />
+  <button on:click={toggleSort}>
+    Sorteer {sortOrder === "asc" ? "Oplopend" : "Aflopend"}
+  </button>
 </div>
-
 
 <!-- Grafiek -->
 {#if errorMessage}
@@ -157,7 +178,21 @@
     margin: 2em;
   }
 
-  .controls {
+  h1,
+  h2 {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    font-size: 2.5em;
+  }
+
+  .name-label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .filter-controls,
+  h1,
+  h2 {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -168,5 +203,27 @@
     padding: 10px;
   }
 
-  
+  input,
+  select,
+  button {
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid black;
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  input,
+  select,
+  button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid black;
+    background-color: rgb(255, 255, 255);
+  }
+
+  input {
+    width: 550px;
+  }
 </style>
