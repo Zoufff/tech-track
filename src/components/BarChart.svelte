@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { fetchData } from "../lib/Fetch.js"; // fetch-functie importeren
   import * as d3 from "d3";
-  import ChartTitle from "./ChartTitle.svelte";
+  import ChartTitle from "../components2/Title.svelte";
 
   let data = []; // Alle data van de API wordt opgehaald
   let filteredData = []; // gefilterde data die wordt weergegeven in de grafiek
