@@ -106,8 +106,17 @@
     updateChart(filteredData);
   }
 
-  // Haalt data op bij het laden van de pagina
-  onMount(async () => {
+  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
+  let sortOrder = "asc"; // dit houdt de sorteervolgorde bij
+  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
+  // de funtion die later gebruikt wordt in de sorteer button
+  function toggleSort() {
+    sortOrder = sortOrder === "asc" ? "desc" : "asc";
+    sortChart(sortOrder);
+  }
+
+   // Haalt data op bij het laden van de pagina
+   onMount(async () => {
     try {
       // Gebruik de aangepaste fetchData-functie om het nieuwste jaar en gefilterde data op te halen
       data = await fetchData();
@@ -117,21 +126,10 @@
       errorMessage = error.message; // Toon foutmelding in de UI
     }
   });
-
-  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
-  let sortOrder = "asc"; // dit houdt de sorteervolgorde bij
-  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
-  // de funtion die later gebruikt wordt in de sorteer button
-  function toggleSort() {
-    sortOrder = sortOrder === "asc" ? "desc" : "asc";
-    sortChart(sortOrder);
-  }
 </script>
 
 <!-- maak hier een apart component van -->
 <ChartTitle />
-
-
 <!-- controls -->
 <div class="controls">
   <!-- Zoekbalk -->
