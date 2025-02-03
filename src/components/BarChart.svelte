@@ -177,22 +177,14 @@
     margin: 2em;
   }
 
-  h1,
-  h2 {
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
-    font-size: 2.5em;
-    text-align: center;
-  }
+ 
 
   .name-label {
     font-size: 14px;
     font-weight: bold;
   }
 
-  .filter-controls,
-  h1,
-  h2 {
+  .filter-controls {
     display: flex;
     justify-content: center;
     gap: 10px;
