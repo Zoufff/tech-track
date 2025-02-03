@@ -172,8 +172,7 @@
     width: auto;
     max-width: 100%;
     overflow-x: auto;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     font-size: 1.2em;
     margin: 2em;
   }
@@ -183,6 +182,7 @@
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
       sans-serif;
     font-size: 2.5em;
+    text-align: center;
   }
 
   .name-label {
