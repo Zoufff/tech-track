@@ -123,6 +123,7 @@
     }
   });
 
+
   // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
   let sortOrder = 'asc'; // dit houdt de sorteervolgorde bij
   // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button 
@@ -139,8 +140,7 @@
 
 
 
-
-
+<!-- maak hier een apart component van -->
 <style> 
   .chart-container{
     position: relative;
@@ -153,9 +153,7 @@
     
   }
   
-
-  
-  h1{
+  h1,h2{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 2.5em;
   }
@@ -166,14 +164,13 @@
   }
 
 
-  .filter-controls, h1 {
+  .filter-controls, h1, h2 {
   display: flex; 
   justify-content: center; 
   gap: 10px; 
   margin-bottom: 1em; 
   position: sticky;
   top: 0; 
-
   z-index: 1000; 
   padding: 10px;
 }
@@ -205,6 +202,8 @@ input, select, button {
   <h1>Wereldwijde verschillen in levensverwachting</h1>
   <h2>2021</h2>
 </div>
+
+
 
  <!-- maak hier een apart component van -->
   <!-- Filtercontrols -->
