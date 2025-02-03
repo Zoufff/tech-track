@@ -3,6 +3,9 @@
   import { fetchData } from "../lib/Fetch.js"; // fetch-functie importeren
   import * as d3 from "d3";
   import ChartTitle from "./Title.svelte";
+  import Search from "./Search.svelte";
+  import LocationFilter from "./LocationFilter.svelte";
+  import SortButton from "./SortButton.svelte";
 
   let data = []; // Alle data van de API wordt opgehaald
   let filteredData = []; // gefilterde data die wordt weergegeven in de grafiek
@@ -128,30 +131,20 @@
 <!-- maak hier een apart component van -->
 <ChartTitle />
 
-<!-- maak hier een apart component van -->
-<!-- Filtercontrols -->
-<div class="filter-controls">
+
+<!-- controls -->
+<div class="controls">
   <!-- Zoekbalk -->
-  <input
-    type="text"
-    placeholder="Zoek een land..."
-    on:input={(e) => searchCountries(e.target.value)}
-  />
+  <Search />
 
   <!-- Filter op locatie -->
-  <select on:change={(e) => filterByLocation(e.target.value)}>
-    <option value="all">Filteren op wereldeel</option>
-    {#each [...new Set(data.map((d) => d.location))] as location}
-      <option value={location}>{location}</option>
-    {/each}
-  </select>
+  <LocationFilter />
 
   <!-- maak hier een apart component van -->
   <!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button -->
-  <button on:click={toggleSort}>
-    Sorteer {sortOrder === "asc" ? "Oplopend" : "Aflopend"}
-  </button>
+  <SortButton />
 </div>
+
 
 <!-- Grafiek -->
 {#if errorMessage}
@@ -178,21 +171,8 @@
     margin: 2em;
   }
 
-  h1,
-  h2 {
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
-    font-size: 2.5em;
-  }
-
-  .name-label {
-    font-size: 14px;
-    font-weight: bold;
-  }
-
-  .filter-controls,
-  h1,
-  h2 {
+  .controls,
+   {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -203,27 +183,5 @@
     padding: 10px;
   }
 
-  input,
-  select,
-  button {
-    margin: 0;
-    padding: 10px;
-    font-size: 14px;
-    border: 2px solid black;
-    background-color: rgba(255, 255, 255, 0);
-  }
-
-  input,
-  select,
-  button {
-    margin: 5px;
-    padding: 10px;
-    font-size: 14px;
-    border: 2px solid black;
-    background-color: rgb(255, 255, 255);
-  }
-
-  input {
-    width: 550px;
-  }
+  
 </style>

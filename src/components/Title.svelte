@@ -13,11 +13,10 @@
         margin-bottom: 15px;
     }
     h1 {
-        font-size: 24px;
+        font-size: 3em;
         font-weight: bold;
     }
     h2 {
-        font-size: 20px;
-        color: rgb(0, 0, 0);
+        font-size: 2em;
     }
 </style>
