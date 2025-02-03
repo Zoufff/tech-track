@@ -15,6 +15,7 @@
         font-size: 14px;
         border: 2px solid black;
         background-color: rgb(255, 255, 255);
+        width: 30vw;
     }
   </style>
   
