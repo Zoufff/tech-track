@@ -24,6 +24,7 @@
       .scaleLinear()
       .domain([d3.min(data, (d) => d.value), d3.max(data, (d) => d.value)]) // Min-max waarden
       .range(["red", "green"]) // Kleurenbereik
+      .interpolate(d3.interpolateRgb); // Zorgt voor een vloeiende overgang
 
     // Stelt de afmetingen van de SVG-container in
     d3.select(chartContainer)
