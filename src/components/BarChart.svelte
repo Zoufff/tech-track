@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { fetchData } from "../lib/Fetch.js"; // fetch-functie importeren
   import * as d3 from "d3";
+  import ChartTitle from "./ChartTitle.svelte";
 
   let data = []; // Alle data van de API wordt opgehaald
   let filteredData = []; // gefilterde data die wordt weergegeven in de grafiek
@@ -125,10 +126,7 @@
 </script>
 
 <!-- maak hier een apart component van -->
-<div>
-  <h1>Wereldwijde verschillen in levensverwachting</h1>
-  <h2>2021</h2>
-</div>
+<ChartTitle {year} />
 
 <!-- maak hier een apart component van -->
 <!-- Filtercontrols -->
