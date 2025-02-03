@@ -19,11 +19,11 @@
       .domain([0, d3.max(data, (d) => d.value)]) // Bepaal de schaal op basis van de grootste waarde
       .range([0, svgWidth - 400]); // Breedtetoewijzing
 
+    // Deze code is voor de kleuren op basis van de 'value'
     const colorScale = d3
       .scaleLinear()
       .domain([d3.min(data, (d) => d.value), d3.max(data, (d) => d.value)]) // Min-max waarden
       .range(["red", "green"]) // Kleurenbereik
-      .interpolate(d3.interpolateRgb); // Zorgt voor een vloeiende overgang
 
     // Stelt de afmetingen van de SVG-container in
     d3.select(chartContainer)
@@ -39,7 +39,7 @@
       .data(data)
       .join("rect")
       .attr("height", barHeight)
-      .attr('fill', d => colorScale(d.value)) // Dynamische kleur op basis van waarde
+      .attr('fill', d => colorScale(d.value)) // kleur op basis van waarde
       .attr("width", (d) => xScale(d.value)) // Breedte van de balk gebaseerd op de waarde
       .attr("y", (d, i) => i * barSpacing) // Positie van de balk
       .attr("x", 250); // Startpositie
