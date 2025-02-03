@@ -4,7 +4,7 @@
 
 <div>
     <h1>Wereldwijde verschillen in levensverwachting</h1>
-    <h2>{year}</h2>
+    <h2>2021</h2>
 </div>
 
 <style>
