@@ -20,14 +20,6 @@
       .range([0, svgWidth - 400]); // Breedtetoewijzing
 
 
- // Sorteer de data van hoog naar laag en ken een rang toe (1 is hoogste)
- data.sort((a, b) => d3.descending(a.value, b.value));
-  data.forEach((d, i) => {
-    d.rank = i + 1; // Het eerste item (hoogste waarde) krijgt rank 1, enzovoort
-  });
-
-
-
 
 
     // Stelt de afmetingen van de SVG-container in
@@ -211,6 +203,7 @@ input, select, button {
  <!-- maak hier een apart component van -->
 <div>
   <h1>Wereldwijde verschillen in levensverwachting</h1>
+  <h2>2021</h2>
 </div>
 
  <!-- maak hier een apart component van -->
