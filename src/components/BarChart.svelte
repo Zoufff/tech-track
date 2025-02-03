@@ -126,7 +126,7 @@
 </script>
 
 <!-- maak hier een apart component van -->
-<ChartTitle {year} />
+<ChartTitle />
 
 <!-- maak hier een apart component van -->
 <!-- Filtercontrols -->
