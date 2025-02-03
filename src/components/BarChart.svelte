@@ -89,18 +89,19 @@
   }
 
   // Functie om de data te sorteren
-   
-
-
-  // Functie om te zoeken in de data
-  function searchCountries(query) {
-    filteredData = data.filter((d) =>
-      d.name.toLowerCase().includes(query.toLowerCase()),
-    );
+  function sortChart(order) {
+    if (order === "asc") {
+      filteredData.sort((a, b) => d3.ascending(a.value, b.value));
+    } else if (order === "desc") {
+      filteredData.sort((a, b) => d3.descending(a.value, b.value));
+    }
     updateChart(filteredData);
   }
 
-
+  function updateData(newData) {
+  filteredData = newData; // Update de gefilterde data
+  updateChart(filteredData); // Vernieuw de grafiek
+}
 
    // Haalt data op bij het laden van de pagina
    onMount(async () => {
@@ -120,7 +121,7 @@
 <!-- controls -->
 <div class="controls">
   <!-- Zoekbalk -->
-  <Search />
+  <SearchBar data={data} onSearch={updateData} />
 
   <!-- Filter op locatie -->
   <LocationFilter />
@@ -128,7 +129,6 @@
   <!-- maak hier een apart component van -->
   <!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button -->
   <SortButton />
-  
 </div>
 
 
