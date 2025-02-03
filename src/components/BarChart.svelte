@@ -177,7 +177,9 @@
     margin: 2em;
   }
 
- 
+ div{
+  align-items: center;
+ }
 
   .name-label {
     font-size: 14px;
