@@ -171,8 +171,7 @@
     margin: 2em;
   }
 
-  .controls,
-   {
+  .controls {
     display: flex;
     justify-content: center;
     gap: 10px;
