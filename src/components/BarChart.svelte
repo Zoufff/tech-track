@@ -89,14 +89,8 @@
   }
 
   // Functie om de data te sorteren
-  function sortChart(order) {
-    if (order === "asc") {
-      filteredData.sort((a, b) => d3.ascending(a.value, b.value));
-    } else if (order === "desc") {
-      filteredData.sort((a, b) => d3.descending(a.value, b.value));
-    }
-    updateChart(filteredData);
-  }
+   
+
 
   // Functie om te zoeken in de data
   function searchCountries(query) {
@@ -106,14 +100,7 @@
     updateChart(filteredData);
   }
 
-  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
-  let sortOrder = "asc"; // dit houdt de sorteervolgorde bij
-  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
-  // de funtion die later gebruikt wordt in de sorteer button
-  function toggleSort() {
-    sortOrder = sortOrder === "asc" ? "desc" : "asc";
-    sortChart(sortOrder);
-  }
+
 
    // Haalt data op bij het laden van de pagina
    onMount(async () => {
@@ -140,7 +127,7 @@
 
   <!-- maak hier een apart component van -->
   <!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button -->
-  <SortButton />
+  <SortButton sortOrder={sortOrder} onSort={sortChart} />
 </div>
 
 
