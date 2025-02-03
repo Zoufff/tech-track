@@ -127,7 +127,8 @@
 
   <!-- maak hier een apart component van -->
   <!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button -->
-  <SortButton sortOrder={sortOrder} onSort={sortChart} />
+  <SortButton />
+  
 </div>
 
 
