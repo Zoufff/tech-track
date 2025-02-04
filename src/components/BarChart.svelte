@@ -95,7 +95,7 @@
 <ChartTitle />
 
 <!-- Filtercontrols (HERKANSING) component van gemaakt -->
-
+<div class="filter-controls">
 <!-- Zoekbalk -->
 <Search {data} {updateChart} />
 
@@ -104,6 +104,7 @@
 
 <!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button, component van gemaakt -->
 <Sort {filteredData} {updateChart} />
+</div>
 
 <!-- Grafiek -->
 {#if errorMessage}
@@ -137,6 +138,17 @@
   .name-label {
     font-size: 14px;
     font-weight: bold;
+  }
+
+  .filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px;
   }
 
 </style>
