@@ -100,7 +100,7 @@
 <Search {data} {updateChart} />
 
 <!-- Filter op locatie,(HERKANSING) component van gemaakt -->
-<FilterByLocation {data} {updateChart} />
+<Filter {data} {updateChart} />
 
 <!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button, component van gemaakt -->
 <Sort {filteredData} {updateChart} />
