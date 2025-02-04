@@ -5,7 +5,7 @@
   import ChartTitle from "./Title.svelte";
   import Search from "./Search.svelte";
   import Sort from "./Sort.svelte";
-
+  import Filter from "./Filter.svelte";
 
   let data = []; // Alle data van de API wordt opgehaald
   let filteredData = []; // gefilterde data die wordt weergegeven in de grafiek
@@ -44,7 +44,7 @@
       .data(data)
       .join("rect")
       .attr("height", barHeight)
-      .attr('fill', d => colorScale(d.value)) // kleur op basis van waarde
+      .attr("fill", (d) => colorScale(d.value)) // kleur op basis van waarde
       .attr("width", (d) => xScale(d.value)) // Breedte van de balk gebaseerd op de waarde
       .attr("y", (d, i) => i * barSpacing) // Positie van de balk
       .attr("x", 250); // Startpositie
@@ -78,26 +78,6 @@
       .text((d) => d.value);
   }
 
-  // Functie om te filteren op locatie
-  function filterByLocation(location) {
-    if (location === "all") {
-      filteredData = [...data]; // Laat alle data zien
-    } else {
-      filteredData = data.filter((d) => d.location === location); // Filter op ParentLocation
-    }
-    updateChart(filteredData); // Update de grafiek
-  }
-
-  // Functie om de data te sorteren
-  function sortChart(order) {
-    if (order === "asc") {
-      filteredData.sort((a, b) => d3.ascending(a.value, b.value));
-    } else if (order === "desc") {
-      filteredData.sort((a, b) => d3.descending(a.value, b.value));
-    }
-    updateChart(filteredData);
-  }
-
   // Haalt data op bij het laden van de pagina
   onMount(async () => {
     try {
@@ -109,30 +89,21 @@
       errorMessage = error.message; // Toon foutmelding in de UI
     }
   });
-
-
 </script>
 
-<!-- maak hier een apart component van -->
+<!-- De titel (HERKANSING) component van gemaakt -->
 <ChartTitle />
 
-<!-- maak hier een apart component van -->
-<!-- Filtercontrols -->
-<div class="filter-controls">
-  <!-- Zoekbalk -->
-  <Search {data} {updateChart} />
+<!-- Filtercontrols (HERKANSING) component van gemaakt -->
 
-  <!-- Filter op locatie -->
-  <select on:change={(e) => filterByLocation(e.target.value)}>
-    <option value="all">Filteren op wereldeel</option>
-    {#each [...new Set(data.map((d) => d.location))] as location}
-      <option value={location}>{location}</option>
-    {/each}
-  </select>
+<!-- Zoekbalk -->
+<Search {data} {updateChart} />
 
-  <!-- maak hier een apart component van -->
-  <!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button -->
-  <Sort {filteredData} {updateChart} />
+<!-- Filter op locatie,(HERKANSING) component van gemaakt -->
+<FilterByLocation {data} {updateChart} />
+
+<!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button, component van gemaakt -->
+<Sort {filteredData} {updateChart} />
 
 <!-- Grafiek -->
 {#if errorMessage}
@@ -146,59 +117,26 @@
   </div>
 {/if}
 
-<!-- maak hier een apart component van -->
+
 <style>
   .chart-container {
     position: relative;
     width: auto;
     max-width: 100%;
     overflow-x: auto;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
     font-size: 1.2em;
     margin: 2em;
   }
 
- div{
-  align-items: center;
- }
+  div {
+    align-items: center;
+  }
 
   .name-label {
     font-size: 14px;
     font-weight: bold;
   }
 
-  .filter-controls {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 1em;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 10px;
-  }
-
-  input,
-  select,
-  button {
-    margin: 0;
-    padding: 10px;
-    font-size: 14px;
-    border: 2px solid black;
-    background-color: rgba(255, 255, 255, 0);
-  }
-
-  input,
-  select,
-  button {
-    margin: 5px;
-    padding: 10px;
-    font-size: 14px;
-    border: 2px solid black;
-    background-color: rgb(255, 255, 255);
-  }
-
-  input {
-    width: 550px;
-  }
 </style>
