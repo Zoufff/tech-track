@@ -238,14 +238,14 @@ const countryNames = {
       item => item.TimeDim === latestYear && item.Dim1 === 'SEX_BTSX' && !excludedCountries.includes(item.SpatialDim)
     );
 
-    // Controleert of er gefilterde data is
+    // dit controleert of er gefilterde data is
     if (filteredData.length === 0) {
       throw new Error(`Geen data gevonden voor jaar ${latestYear} en "SEX_BTSX".`); // Foutmelding als geen data gevonden wordt
     }
 
     console.log('Gefilterde data:', filteredData);
 
-    // Verwerkt de gefilterde data retourneert de gewenste informatie
+    // V=dit verwerkt de gefilterde data en retourneert informatie
     return filteredData.map((item) => ({
       name: countryNames[item.SpatialDim] || item.SpatialDim, // Vervangtt de landcode door de naam
       value: item.NumericValue ? parseFloat(item.NumericValue.toFixed(2)) : 0, // Afronden op 2 decimalen, bron: chatgpt (HERKANSING)
