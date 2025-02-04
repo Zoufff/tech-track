@@ -4,6 +4,7 @@
   import * as d3 from "d3";
   import ChartTitle from "./Title.svelte";
   import Search from "./Search.svelte";
+  import Sort from "./Sort.svelte";
 
 
   let data = []; // Alle data van de API wordt opgehaald
@@ -97,14 +98,6 @@
     updateChart(filteredData);
   }
 
-  // Functie om te zoeken in de data
-  function searchCountries(query) {
-    filteredData = data.filter((d) =>
-      d.name.toLowerCase().includes(query.toLowerCase()),
-    );
-    updateChart(filteredData);
-  }
-
   // Haalt data op bij het laden van de pagina
   onMount(async () => {
     try {
@@ -117,14 +110,7 @@
     }
   });
 
-  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
-  let sortOrder = "asc"; // dit houdt de sorteervolgorde bij
-  // nieuwe funtion, (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button
-  // de funtion die later gebruikt wordt in de sorteer button
-  function toggleSort() {
-    sortOrder = sortOrder === "asc" ? "desc" : "asc";
-    sortChart(sortOrder);
-  }
+
 </script>
 
 <!-- maak hier een apart component van -->
@@ -146,10 +132,7 @@
 
   <!-- maak hier een apart component van -->
   <!-- Sorteer knop (HERKANSING)ik heb de sorteerbuttons samengevoegd naar 1 button -->
-  <button on:click={toggleSort}>
-    Sorteer {sortOrder === "asc" ? "Oplopend" : "Aflopend"}
-  </button>
-</div>
+  <Sort {filteredData} {updateChart} />
 
 <!-- Grafiek -->
 {#if errorMessage}
