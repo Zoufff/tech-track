@@ -16,7 +16,7 @@
   
   <!-- Filter op locatie -->
   <select on:change={(e) => filterByLocation(e.target.value)}>
-    <option value="all">Filteren op wereldeel</option>
+    <option value="all">Filteren op werelddeel</option>
     {#each [...new Set(data.map((d) => d.location))] as location}
       <option value={location}>{location}</option>
     {/each}
