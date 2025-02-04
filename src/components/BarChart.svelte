@@ -3,6 +3,8 @@
   import { fetchData } from "../lib/Fetch.js"; // fetch-functie importeren
   import * as d3 from "d3";
   import ChartTitle from "./Title.svelte";
+  import Search from "./Search.svelte";
+
 
   let data = []; // Alle data van de API wordt opgehaald
   let filteredData = []; // gefilterde data die wordt weergegeven in de grafiek
@@ -132,11 +134,7 @@
 <!-- Filtercontrols -->
 <div class="filter-controls">
   <!-- Zoekbalk -->
-  <input
-    type="text"
-    placeholder="Zoek een land..."
-    on:input={(e) => searchCountries(e.target.value)}
-  />
+  <Search {data} {updateChart} />
 
   <!-- Filter op locatie -->
   <select on:change={(e) => filterByLocation(e.target.value)}>
